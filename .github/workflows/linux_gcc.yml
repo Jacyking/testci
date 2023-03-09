@@ -4,14 +4,11 @@ on:
   push:
     branches:
       - main
-      - master
-      - cpp20_base
+      
   pull_request:
     branches:
       - main
-      - master
-      - cpp20_base
-
+      
 jobs:
   build_by_gcc:
     strategy:
