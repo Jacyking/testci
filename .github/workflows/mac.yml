@@ -31,10 +31,9 @@ jobs:
           brew install mysql
           mysql.server start
           brew services start mysql
-          mysql -uroot -e 'CREATE USER 'test1'@'localhost' IDENTIFIED BY 'test1'';
           
       - name: Verify MySQL Connections
-        run: mysql -utest1 -ptest1
+        run: mysql -uroot
 
       - name: Configure CMake
         run: CXX=clang++ CC=clang cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{matrix.mode}}
