@@ -22,6 +22,7 @@ jobs:
       
       - name: Verify MySQL Connections
         run: |
+          mysqld --initialize --console
           net start mysql
           mysql -uroot -e'show databases;'
     
