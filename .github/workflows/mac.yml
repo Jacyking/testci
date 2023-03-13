@@ -29,8 +29,7 @@ jobs:
       - name: Install MySQL
         run: |
           brew install mysql
-          mysqld --initialize-insecure
-          mysql -u${{ secrets.DB_USER }} -p${{ secrets.DB_PASSWORD }} -e 'CREATE USER 'test1'@'localhost' IDENTIFIED BY 'test1'';
+          mysql -uroot -e 'CREATE USER 'test1'@'localhost' IDENTIFIED BY 'test1'';
           
       - name: Verify MySQL Connections
         run: mysql -utest1 -ptest1
