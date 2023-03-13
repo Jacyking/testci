@@ -29,7 +29,7 @@ jobs:
       - name: Install MySQL
         run: |
           brew install mysql
-          brew services restart mysql
+          /usr/local/opt/mysql/bin/mysqld_safe --datadir=/usr/local/var/mysql
           mysql -uroot -e 'CREATE USER 'test1'@'localhost' IDENTIFIED BY 'test1'';
           
       - name: Verify MySQL Connections
