@@ -20,8 +20,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       
-      - name: Set up MySQL
-        uses: ./.
+      - uses: ankane/setup-mysql@v1
         with: 
           mysql-version: 8.0
           database: test_ormpp
