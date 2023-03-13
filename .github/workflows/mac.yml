@@ -30,7 +30,7 @@ jobs:
         run: |
           brew install mysql
           mysql.server start
-          mysql_secure_installation
+          brew services start mysql
           mysql -uroot -e 'CREATE USER 'test1'@'localhost' IDENTIFIED BY 'test1'';
           
       - name: Verify MySQL Connections
