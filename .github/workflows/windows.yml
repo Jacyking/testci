@@ -21,7 +21,7 @@ jobs:
         uses: actions/checkout@v3
       
       - name: Set up MySQL
-        uses: mysql-actions/setup-mysql@v1
+        uses: mysql-actions/setup-mysql@v3
         with: 
           mysql-version: '8.0'
 
