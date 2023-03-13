@@ -29,6 +29,7 @@ jobs:
       - name: Install MySQL
         run: |
           brew install mysql
+          brew services start mysql
           
       - name: Verify MySQL Connections
         run: mysql -uroot -e'show databases;'
