@@ -10,7 +10,7 @@ jobs:
       - uses: actions/checkout@v2
       
       - name: Install iptables
-        run: apt-get update && apt-get install -y iptables
+        run: sudo apt-get update && sudo apt-get install -y iptables
         
       - name: Block China
         uses: ./.
