@@ -26,11 +26,12 @@ jobs:
         id: set-up-homebrew
         uses: Homebrew/actions/setup-homebrew@master
         
-      - name: Install MySQL
-        run: |
-          brew install mysql
-          mysql.server start
-          
+      - name: SetUp MySQL
+        uses: ankane/setup-mysql@v1
+        with: 
+          mysql-version: 8.0
+          database: test_ormpp
+        
       - name: Verify MySQL Connections
         run: mysql -uroot -e'show databases;'
 
