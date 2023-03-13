@@ -27,7 +27,7 @@ jobs:
           database: test_ormpp
         
       - name: Verify MySQL Connections
-      - run: mysql -uroot -e'show databases;'
+        run: mysql -uroot -e'show databases;'
     
       - name: Install ninja-build tool
         uses: seanmiddleditch/gha-setup-ninja@v3
