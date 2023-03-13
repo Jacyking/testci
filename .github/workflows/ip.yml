@@ -14,4 +14,4 @@ jobs:
         with:
           block: china
       - name: Test Connection
-        run: curl https://www.example.com
+        run: curl https://www.baidu.com
