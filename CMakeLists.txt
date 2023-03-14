@@ -1,11 +1,8 @@
-cmake_minimum_required(VERSION 3.0.0)
-project(testci VERSION 0.1.0)
+cmake_minimum_required(VERSION 3.15)
+project(testci)
 
-include(CTest)
-enable_testing()
+include_directories(include)
 
-add_executable(testci main.cpp)
+add_subdirectory(${testci_SOURCE_DIR}/thirdparty)
 
-set(CPACK_PROJECT_NAME ${PROJECT_NAME})
-set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
-include(CPack)
+add_subdirectory(${testci_SOURCE_DIR}/tests)
