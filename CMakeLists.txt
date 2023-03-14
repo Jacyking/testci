@@ -98,8 +98,8 @@ add_subdirectory(${testci_SOURCE_DIR}/thirdparty)
 add_subdirectory(${testci_SOURCE_DIR}/tests)
 
 add_executable(${PROJECT_NAME}
-        test_testci.cpp
-        main.cpp
+        ./tests/test_testci.cpp
+        ./tests/main.cpp
         )
 
 add_test(NAME ${PROJECT_NAME} COMMAND ${PROJECT_NAME})
