@@ -7,4 +7,4 @@ add_executable(${PROJECT_NAME}
 
 add_test(NAME ${PROJECT_NAME} COMMAND ${PROJECT_NAME})
 
-target_link_libraries(${PROJECT_NAME} doctest)
+target_link_libraries(${PROJECT_NAME} ${MYSQL_LIBRARY} doctest)
