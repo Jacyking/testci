@@ -27,15 +27,16 @@ jobs:
     - name: Build with ${{ matrix.compiler }}
       run:  cmake --build ${{github.workspace}}/build --config Debug
       
-    - name: Generate a coverage value
-      run: |
-        COVERAGE="$( parse-coverage-report )"
-        echo "##[set-output name=lines;]${COVERAGE}%"
-        
-    - name: Generate the badge SVG image
-      uses: emibcn/badge-action@v1
+    - name: Set up Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
       with:
-          label: 'Test coverage'
-          status: ${{ steps.coverage.outputs.lines }}
-          color: 'blue,555,daf'
-          path: badge.svg
+        node-version: ${{ matrix.node-version }}
+        
+    - name: Install dependencies
+      run: npm install
+
+    - name: Run tests
+      run: npm run test
+
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v1
