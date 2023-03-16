@@ -21,9 +21,10 @@ TEST_CASE("test") {
   dbng<mysql> mysql;
   REQUIRE(mysql.connect("127.0.0.1", "root", "", "test_ormppdb",
                         /*timeout_seconds=*/5, 3306));
+  REQUIRE(mysql.create_datatable<person>());
   CHECK(mysql.insert<person>({1, "2", 3}) == 1);
   auto result = mysql.query<person>();
-  CHECK(result.size() == 1);
+  REQUIRE(result.size() == 1);
   CHECK(result[0].id == 1);
   CHECK(result[0].name == "2");
   CHECK(result[0].age == 3);
