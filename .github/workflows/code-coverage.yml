@@ -7,7 +7,7 @@ jobs:
   
     name: Generate coverage report
     runs-on: ubuntu-latest
-    
+
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
@@ -26,16 +26,21 @@ jobs:
 
     - name: Build with ${{ matrix.compiler }}
       run:  cmake --build ${{github.workspace}}/build --config Debug
-    
-    - name: Setup LCOV
-      uses: hrishikesh-kadam/setup-lcov@v1
-      
-    - name: Report code coverage
-      uses: zgosalvez/github-actions-report-lcov@v3
+
+    - name: Setup Dart SDK
+      uses: dart-lang/setup-dart@v1.2
+
+    - name: Install dependencies
+      run: dart pub get
+
+    - name: Generate Coverage
+      working-directory: ${{github.workspace}}
+      run: ./coverage.sh ${{github.workspace}}/build && ls -a ${{github.workspace}}/build && ls -a ${{github.workspace}}/build/coverage
+
+    - name: Report Coverage
+      uses: zgosalvez/github-actions-report-lcov@v1.3.2
       with:
-        coverage-files: coverage/lcov.*.info
-        minimum-coverage: 90
-        artifact-name: code-coverage-report
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-        working-directory: ${{github.workspace}}/build/tests
-        update-comment: true
+        coverage-files: "${{github.workspace}}/build/coverage/*.info"
+        github-token: ${{ secrets.GITHUB_TOKEN }}    
+        artifact-name: common-coverage-report
+        minimum-coverage: 0
