@@ -12,7 +12,7 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
     
-    - name: SetUp MySQL
+    - name: Setup MySQL
       uses: ankane/setup-mysql@v1
       with: 
         mysql-version: 8.0
@@ -37,5 +37,5 @@ jobs:
         minimum-coverage: 90
         artifact-name: code-coverage-report
         github-token: ${{ secrets.GITHUB_TOKEN }}
-        working-directory: ${{github.workspace}}/build
+        working-directory: ${{github.workspace}}/build/tests
         update-comment: true
