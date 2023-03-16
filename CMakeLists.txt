@@ -111,6 +111,8 @@ else ()
 	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread -std=c++17")
 endif ()
 
+enable_testing()
+
 add_definitions(-DORMPP_ENABLE_MYSQL)
 
 include_directories(${MYSQL_INCLUDE_DIR} include)
