@@ -26,21 +26,16 @@ jobs:
 
     - name: Build with ${{ matrix.compiler }}
       run:  cmake --build ${{github.workspace}}/build --config Debug
-
-    - name: Setup Dart SDK
-      uses: dart-lang/setup-dart@v1.2
-
-    - name: Install dependencies
-      run: dart pub get
-
-    - name: Generate Coverage
-      working-directory: ${{github.workspace}}
-      run: ./coverage.sh ${{github.workspace}}/build && ls -a ${{github.workspace}}/build && ls -a ${{github.workspace}}/build/coverage
-
-    - name: Report Coverage
-      uses: zgosalvez/github-actions-report-lcov@v1.3.2
+      
+    - name: Generate a coverage value
+      run: |
+        COVERAGE="$( parse-coverage-report )"
+        echo "##[set-output name=lines;]${COVERAGE}%"
+        
+    - name: Generate the badge SVG image
+      uses: emibcn/badge-action@v1
       with:
-        coverage-files: "${{github.workspace}}/build/coverage/*.info"
-        github-token: ${{ secrets.GITHUB_TOKEN }}    
-        artifact-name: common-coverage-report
-        minimum-coverage: 0
+          label: 'Test coverage'
+          status: ${{ steps.coverage.outputs.lines }}
+          color: 'blue,555,daf'
+          path: badge.svg
