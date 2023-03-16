@@ -1,9 +1,30 @@
+#include "dbng.hpp"
 #include "doctest.h"
-#include "test.hpp"
+#include "mysql.hpp"
+#include "ormpp_cfg.hpp"
 
-TEST_CASE("test case 1") { CHECK(testci() == 1); }
+using namespace std::string_literals;
+using namespace ormpp;
+struct person {
+  int id;
+  std::string name;
+  int age;
+};
+REFLECTION(person, id, name, age)
 
-TEST_CASE("test case 2") { 
-  auto result = testci();
-  CHECK(result == 1); 
+template <class T, size_t N>
+constexpr size_t size(T (&)[N]) {
+  return N;
+}
+
+TEST_CASE("test") {
+  dbng<mysql> mysql;
+  REQUIRE(mysql.connect("127.0.0.1", "root", "", "test_ormppdb",
+                        /*timeout_seconds=*/5, 3306));
+  CHECK(mysql.insert<person>({1, "2", 3}) == 1);
+  auto result = mysql.query<person>();
+  CHECK(result.size() == 1);
+  CHECK(result[0].id == 1);
+  CHECK(result[0].name == "2");
+  CHECK(result[0].age == 3);
 }
