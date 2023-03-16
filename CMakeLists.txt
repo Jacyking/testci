@@ -93,6 +93,6 @@ endif ()
 
 include_directories(${MYSQL_INCLUDE_DIR} include)
 
-add_subdirectory(${testci_SOURCE_DIR}/thirdparty)
+add_subdirectory(${CMAKE_SOURCE_DIR}/thirdparty)
 
-add_subdirectory(${testci_SOURCE_DIR}/tests)
+add_subdirectory(${CMAKE_SOURCE_DIR}/tests)
