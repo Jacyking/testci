@@ -36,8 +36,11 @@ jobs:
     - name: Install dependencies
       run: npm install
 
-    - name: Run tests
-      run: npm run test
+    - name: Test
+      working-directory: ${{github.workspace}}/build
+      env:
+        CTEST_OUTPUT_ON_FAILURE: 1
+      run: ctest -C ${{ matrix.configuration }}
 
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v1
