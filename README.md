@@ -6,7 +6,7 @@
 
 | OS (Compiler Version)                          | Status                                                                                                   |
 |------------------------------------------------|----------------------------------------------------------------------------------------------------------|
-| macos-latest                                   | ![win](https://github.com/Jacyking/testci/actions/workflows/macos-latest (Debug).yml/badge.svg?branch=main)                |
+| macos-latest                                   | ![win](https://github.com/Jacyking/testci/actions/workflows/ci.yml/badge.svg?job=macos-latest (Debug))                |
 | ubuntu-latest                                  | ![win](https://github.com/Jacyking/testci/actions/workflows/ci.yml/badge.svg?branch=main)                |
 | windows-latest                                 | ![win](https://github.com/Jacyking/testci/actions/workflows/ci.yml/badge.svg?branch=main)                |
 
