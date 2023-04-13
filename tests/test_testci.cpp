@@ -25,6 +25,7 @@ TEST_CASE("test") {
   CHECK(result[0].id == 1);
   CHECK(result[0].name == "2");
   CHECK(result[0].age == 3);
+  auto aaaa = new char[666];
   // #ifndef _WIN32
   //   A
   // #endif
