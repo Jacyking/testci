@@ -1,6 +1,5 @@
 <p align="center">
-<img alt="build" src="(https://github.com/Jacyking/testci/workflows/ci.yml/badge.svg)">
-<img alt="license" src="https://img.shields.io/github/license/Jacyking/testci?style=flat-square">
+<img alt="build" src="https://github.com/Jacyking/testci/workflows/ci.yml/badge.svg?branch=main">
 <img alt="language" src="https://img.shields.io/github/languages/top/Jacyking/testci?style=flat-square">
 <img alt="last commit" src="https://img.shields.io/github/last-commit/Jacyking/testci?style=flat-square">
 </p>
