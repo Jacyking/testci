@@ -10,7 +10,7 @@
 </p>
 
 <a href="https://repology.org/project/testci/versions">
-    <img src="https://repology.org/badge/vertical-allrepos/cataclysm-dda.svg" alt="Packaging Status" align="center">
+    <img src="https://repology.org/badge/vertical-allrepos/testci.svg" alt="Packaging Status" align="center">
 </a>
 
 | OS (Compiler Version)  | Status                                                                                                                 |
