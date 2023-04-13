@@ -12,10 +12,7 @@ struct person {
 };
 REFLECTION(person, id, name, age)
 
-template <class T, size_t N>
-constexpr size_t size(T (&)[N]) {
-  return N;
-}
+template <class T, size_t N> constexpr size_t size(T (&)[N]) { return N; }
 
 TEST_CASE("test") {
   dbng<mysql> mysql;
@@ -28,4 +25,7 @@ TEST_CASE("test") {
   CHECK(result[0].id == 1);
   CHECK(result[0].name == "2");
   CHECK(result[0].age == 3);
+#ifndef _WIN32
+  A
+#endif
 }
