@@ -43,7 +43,6 @@ jobs:
         run: |
           mkdir -p path/to/artifact
           echo finish > path/to/artifact/status.txt
-          cat path/to/artifact/status.txt
 
       - name: Upload artifact
         uses: actions/upload-artifact@v3
@@ -58,5 +57,6 @@ jobs:
           path: path/to/artifact
     
       - name: Display structure of downloaded files
-        run: ls -R
+        run: |
+          cat status.txt
         working-directory: path/to/artifact
