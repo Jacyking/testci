@@ -47,6 +47,6 @@ jobs:
         uses: colinparsonsme/upload-status-badge@v0
         with:
           auth: ${{ secrets.GITHUB_GIST_TOKEN }}
-          gist-id: ${{ secrets.DEPENDENCIES_INSTALL_GIST_ID }}
+          gist-id: 385b6fa9cb3dead6271a73baa67f1713
           badge-label: Dependencies install
           outcome: ${{ steps.install-dependencies.outcome }}
