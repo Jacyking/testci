@@ -39,24 +39,38 @@ jobs:
           CTEST_OUTPUT_ON_FAILURE: 1
         run: ctest -C ${{ matrix.configuration }} -j `nproc` -V
 
-      - name: Create artifact
-        run: |
-          mkdir -p path/to/artifact
-          echo ${{ matrix.os }} finish > path/to/artifact/status.txt
-
-      - name: Upload artifact
-        uses: actions/upload-artifact@v3
+      - name: Upload badge with result of install dependencies
+        uses: colinparsonsme/upload-status-badge@v0
         with:
-          name: status
-          path: path/to/artifact/status.txt
+          auth: ${{ secrets.GITHUB_GIST_TOKEN }}
+          gist-id: ${{ secrets.DEPENDENCIES_INSTALL_GIST_ID }}
+          badge-label: Dependencies install
+          outcome: ${{ steps.install-dependencies.outcome }}
 
-      - name: Downland artifact
-        uses: actions/download-artifact@v3
+      - name: Upload badge with result of tests
+        uses: colinparsonsme/upload-status-badge@v0
         with:
-          name: status
-          path: path/to/artifact
-    
-      - name: Display structure of downloaded files
-        run: |
-          cat status.txt
-        working-directory: path/to/artifact
+          auth: ${{ secrets.GITHUB_GIST_TOKEN }}
+          gist-id: ${{ secrets.TESTS_GIST_ID }
+          badge-label: Tests
+          passing-results:
+            ${{ steps.tests.outputs.passed-tests }} / ${{
+            steps.tests.outputs.total-tests }}
+            # this can be a fraction, percentage, float, or mathematical
+            # expression indicating either the number or proportion of
+            # passing results. here, we use it to indicate the proportion of
+            # tests that are passing.
+          passing-results-thresholds:
+            '0.5, 1'
+            # passing results thresholds for when to change the badge color
+            # are optional, and can be left out. these can similarly be
+            # fractions, percentages, floats, or mathematical expressions.
+
+      - name: Upload badge with result of deploy
+        uses: colinparsonsme/upload-status-badge@v0
+        with:
+          auth: ${{ secrets.GIST_SECRET }}
+          gist-id: ${{ secrets.BUILD_GIST_ID}
+          badge-label: Build URL
+          custom-message: ${{ steps.build.outputs.url }}
+          custom-color: 'purple' # can be any color supported by shields.io
