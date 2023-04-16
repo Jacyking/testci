@@ -42,7 +42,7 @@ jobs:
       - name: Create artifact
         run: |
           mkdir -p path/to/artifact
-          echo finish > path/to/artifact/status.txt
+          echo ${{ matrix.os }} finish > path/to/artifact/status.txt
 
       - name: Upload artifact
         uses: actions/upload-artifact@v3
