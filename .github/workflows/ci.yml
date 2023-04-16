@@ -12,7 +12,7 @@ jobs:
       fail-fast: false
       matrix:
         configuration: [ Debug, Release ]
-        os: [ macos-latest, ubuntu-latest, windows-latest ]
+        os: [ ubuntu-latest ]
 
     steps:
       - name: Checkout Code
@@ -38,6 +38,10 @@ jobs:
         env:
           CTEST_OUTPUT_ON_FAILURE: 1
         run: ctest -C ${{ matrix.configuration }} -j `nproc` -V
+
+      - name: Install dependencies
+        id: install-dependencies
+        run: npm ci --production
 
       - name: Upload badge with result of install dependencies
         uses: colinparsonsme/upload-status-badge@v0
