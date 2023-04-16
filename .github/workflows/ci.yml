@@ -48,5 +48,15 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
-          name: my-artifact
+          name: status
           path: path/to/artifact/status.txt
+
+      - name: Downland artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: status
+          path: path/to/artifact
+    
+      - name: Display structure of downloaded files
+        run: ls -R
+        working-directory: path/to/artifact
