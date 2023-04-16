@@ -42,7 +42,7 @@ jobs:
       - name: Create artifact
         run: |
           mkdir -p path/to/artifact
-          echo hello > path/to/artifact/status.txt
+          echo finish > path/to/artifact/status.txt
           cat path/to/artifact/status.txt
 
       - name: Upload artifact
