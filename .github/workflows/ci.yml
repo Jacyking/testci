@@ -39,7 +39,14 @@ jobs:
           CTEST_OUTPUT_ON_FAILURE: 1
         run: ctest -C ${{ matrix.configuration }} -j `nproc` -V
 
-      - uses: actions/upload-artifact@v3
+      - name: Create artifact
+        run: |
+          mkdir -p path/to/artifact
+          echo hello > path/to/artifact/status.txt
+          cat path/to/artifact/status.txt
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
         with:
           name: my-artifact
-          path: path/to/artifact/
+          path: path/to/artifact/status.txt
